@@ -1,43 +1,65 @@
 "use client";
 
 import React from "react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
-import { Button } from "@/components/ui/moving-border";
 import { motion } from "framer-motion";
-import DNAHelixCanvas from "./dna-helix";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <AuroraBackground>
-      <DNAHelixCanvas />
-      <motion.div
-        initial={{ opacity: 0.0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4 min-h-screen"
-      >
-        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-          MindReader<span className="text-green-400">Bio</span>
-        </div>
-        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4 text-center max-w-4xl">
-          Bridging Science and Markets in Biotechnology
-        </div>
-        <div className="text-sm md:text-lg dark:text-neutral-300 text-center max-w-2xl mb-8">
-          Providing scientifically credible biotech insights through cutting-edge intelligence 
-          platform powered by advanced analytics and market research.
-        </div>
-        <Button
-          borderRadius="1.75rem"
-          className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
-          onClick={() => window.location.href = '/insights'}
+    <section className="min-h-screen flex items-center justify-center pt-20 px-4">
+      <div className="max-w-6xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8"
         >
-          Explore Insights
-        </Button>
-      </motion.div>
-    </AuroraBackground>
+          {/* Main Headline */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+            Smarter Biotech,
+            <br />
+            <span className="text-blue-600">Better Markets</span>
+          </h1>
+          
+          {/* Subheading */}
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Welcome to MindReaderBio – your trusted co-pilot for smarter biotech investment decisions and market intelligence.
+          </p>
+
+          {/* Feature Pills */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">
+              📊 Market Analysis
+            </div>
+            <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">
+              🧬 FDA Insights
+            </div>
+            <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">
+              💡 Investment Intelligence
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="mt-12">
+            <Link
+              href="/insights"
+              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+            >
+              Start Your Journey
+            </Link>
+          </div>
+
+          {/* Secondary CTA */}
+          <div className="mt-6">
+            <Link
+              href="/contact"
+              className="text-blue-600 hover:text-blue-700 font-medium underline"
+            >
+              Join Our Waitlist
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
