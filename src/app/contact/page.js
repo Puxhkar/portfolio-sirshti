@@ -1,32 +1,25 @@
 "use client";
 
-import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import { useState } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: ""
+    name: '',
+    email: '',
+    company: '',
+    message: ''
   });
 
-  const placeholders = [
-    "What's your name?",
-    "What's your email?",
-    "What company do you work for?",
-    "Tell us about your biotech interests...",
-  ];
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
@@ -39,10 +32,10 @@ export default function Contact() {
       });
 
       const result = await response.json();
-
+      
       if (response.ok) {
-        alert(result.message);
-        setFormData({ name: "", email: "", company: "", message: "" });
+        alert('Thank you for your message! We\'ll get back to you soon.');
+        setFormData({ name: '', email: '', company: '', message: '' });
       } else {
         alert(result.error || 'Something went wrong. Please try again.');
       }
@@ -53,121 +46,157 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen relative bg-black flex items-center justify-center">
-      <BackgroundBeams />
-      <div className="max-w-4xl mx-auto px-8 py-20 relative z-10">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+    <div className="relative min-h-screen pt-24 overflow-hidden">
+      <div className="relative max-w-6xl mx-auto px-4 py-10">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
             Get In Touch
           </h1>
-          <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
-            Ready to explore biotech opportunities? Connect with our expert team 
-            for personalized insights and analysis.
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            Ready to explore biotech opportunities? Connect with our expert team for personalized insights and analysis.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-8">
-            <div className="bg-neutral-900/50 backdrop-blur-sm rounded-lg p-6 border border-neutral-800">
-              <h3 className="text-xl font-semibold text-white mb-4">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-green-400">📧</span>
-                  <span className="text-neutral-300">contact@mindreaderbio.tech</span>
+        {/* Glass Panels */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Info Panel (glass) */}
+          <section className="relative rounded-2xl bg-white/30 backdrop-blur-xl ring-1 ring-white/40 shadow-xl p-8">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/40 to-white/10" />
+            <div className="relative space-y-8">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Let&apos;s start a conversation</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Whether you&apos;re an investor looking for biotech insights, a startup seeking market analysis, or a researcher interested in our intelligence platform, we&apos;re here to help.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center">
+                    <span className="text-xl">📧</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Email</h3>
+                    <p className="text-gray-700">contact@mindreaderbio.tech</p>
+                    <p className="text-sm text-gray-500">We&apos;ll respond within 24 hours</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-400">📱</span>
-                  <span className="text-neutral-300">+1 (555) 123-4567</span>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center">
+                    <span className="text-xl">💼</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Business Partnerships</h3>
+                    <p className="text-gray-700">partnerships@mindreaderbio.tech</p>
+                    <p className="text-sm text-gray-500">For strategic collaborations</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-400">📍</span>
-                  <span className="text-neutral-300">San Francisco, CA</span>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center">
+                    <span className="text-xl">🚀</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Careers</h3>
+                    <p className="text-gray-700">careers@mindreaderbio.tech</p>
+                    <p className="text-sm text-gray-500">Join our growing team</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="pt-4">
+                <Link
+                  href="/insights"
+                  className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors"
+                >
+                  Join Waitlist
+                </Link>
               </div>
             </div>
+          </section>
 
-            <div className="bg-neutral-900/50 backdrop-blur-sm rounded-lg p-6 border border-neutral-800">
-              <h3 className="text-xl font-semibold text-white mb-4">Our Services</h3>
-              <ul className="space-y-2 text-neutral-300">
-                <li>• Market Analysis & Intelligence</li>
-                <li>• FDA Regulatory Insights</li>
-                <li>• Investment Due Diligence</li>
-                <li>• Clinical Trial Analysis</li>
-                <li>• Technology Assessment</li>
-                <li>• Strategic Consulting</li>
-              </ul>
+          {/* Form Panel (glass) */}
+          <section className="relative rounded-2xl bg-white/30 backdrop-blur-xl ring-1 ring-white/40 shadow-xl p-8">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/40 to-white/10" />
+            <div className="relative">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-800 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 ring-1 ring-white/40 shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-800 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 ring-1 ring-white/40 shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-800 mb-2">
+                    Company (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 ring-1 ring-white/40 shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    placeholder="Your company name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-800 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 ring-1 ring-white/40 shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+                    placeholder="Tell us about your biotech interests, investment focus, or how we can help with market analysis..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
-          </div>
-
-          <div className="bg-neutral-900/50 backdrop-blur-sm rounded-lg p-8 border border-neutral-800">
-            <form onSubmit={onSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-neutral-300 mb-2">
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-green-500 transition-colors"
-                  placeholder="Your full name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-neutral-300 mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-green-500 transition-colors"
-                  placeholder="your.email@company.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-neutral-300 mb-2">
-                  Company
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-green-500 transition-colors"
-                  placeholder="Your company name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-neutral-300 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-green-500 transition-colors resize-none"
-                  placeholder="Tell us about your biotech interests and how we can help..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors duration-200"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
+          </section>
         </div>
       </div>
     </div>

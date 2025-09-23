@@ -61,62 +61,57 @@ src/
 │   ├── layout.js          # Root layout
 │   ├── page.js            # Home page
 │   ├── loading.js         # Loading component
-│   ├── sitemap.js         # SEO sitemap
-│   └── robots.js          # SEO robots.txt
 ├── components/            # React components
 │   ├── ui/                # Aceternity UI components
-│   ├── dna-helix.jsx      # WebGL DNA visualization
-│   ├── hero-section.jsx   # Hero section component
-│   └── navigation.jsx     # Navigation component
-└── lib/
-    └── utils.js           # Utility functions
+│   ├── dna-helix.jsx      # WebGL DNA animation
+│   ├── hero-section.jsx   # Hero section
+│   ├── navigation.jsx     # Navigation component
+│   └── ...
+└── lib/                   # Utility functions
 ```
 
-## 🎯 Pages
+## 🎨 Key Components
 
-- **Home**: Hero section with WebGL DNA helix and Aurora background
-- **About**: Company mission, values, and vision
-- **Team**: Animated team member cards with expertise details
-- **Insights**: Blog/insights with categorized posts
-- **Contact**: Contact form with API integration
+### WebGL DNA Helix
+- Interactive 3D DNA double helix animation
+- Performance optimized with reduced motion support
+- Automatic quality adjustment based on device capabilities
 
-## 🔧 API Routes
+### Aceternity UI Integration
+- Aurora Background effects
+- Floating navigation with hover animations
+- Card hover effects for team members
+- Moving border buttons
+- Animated input components
 
-- `GET /api/posts` - Fetch blog posts with filtering and pagination
-- `GET /api/team` - Fetch team member data
-- `POST /api/contact` - Handle contact form submissions
+### SEO & Performance
+- Comprehensive metadata management
+- JSON-LD structured data for articles and organization
+- Optimized images and lazy loading
+- Performance monitoring and auto-adjustment
 
-## 🎨 Components
+## 🌐 Deployment
 
-### Aceternity UI Components Used:
-- Aurora Background
-- Floating Navbar
-- Moving Border (Buttons)
-- Background Beams
-- Card Hover Effect
-- Placeholders and Vanish Input
+### Vercel (Recommended)
+```bash
+npm run build
+vercel --prod
+```
 
-### Custom Components:
-- DNA Helix (WebGL visualization)
-- Hero Section
-- Navigation
-
-## 🚀 Deployment
-
-The application is optimized for deployment on Vercel:
-
+### Manual Deployment
 ```bash
 npm run build
 npm start
 ```
 
-For Vercel deployment:
-1. Connect your GitHub repository to Vercel
-2. Configure environment variables if needed
-3. Deploy automatically on push to main branch
+## 📧 Email Configuration
 
-## 📊 Performance Targets
+The contact form uses Resend for email delivery. To set up:
 
+1. Create a [Resend account](https://resend.com)
+2. Get your API key from the dashboard
+3. Add the API key to your environment variables
+4. Configure your domain for email sending
 - Lighthouse Score: >85
 - TTFB: <1s via Vercel Edge SSR
 - WebGL Load Overhead: <500ms

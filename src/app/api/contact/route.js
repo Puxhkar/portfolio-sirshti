@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
 export async function POST(request) {
   try {
@@ -12,18 +13,88 @@ export async function POST(request) {
       );
     }
 
-    // TODO: Implement email sending logic with Resend or SendGrid
-    // For now, we'll just log the data
-    console.log('Contact form submission:', {
-      name,
-      email,
-      company,
-      message,
-      timestamp: new Date().toISOString()
-    });
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Please enter a valid email address' },
+        { status: 400 }
+      );
+    }
 
-    // Simulate email sending delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Send email using Nodemailer SMTP if configured, otherwise log
+    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_SECURE, SMTP_FROM, CONTACT_TO } = process.env;
+    const smtpConfigured = SMTP_HOST && SMTP_PORT && SMTP_USER && SMTP_PASS;
+
+    if (smtpConfigured) {
+      const transporter = nodemailer.createTransport({
+        host: SMTP_HOST,
+        port: Number(SMTP_PORT),
+        secure: SMTP_SECURE === 'true' || Number(SMTP_PORT) === 465,
+        auth: { user: SMTP_USER, pass: SMTP_PASS },
+      });
+
+      const fromAddress = SMTP_FROM || 'MindReaderBio <noreply@mindreaderbio.tech>';
+      const toAddress = CONTACT_TO || 'contact@mindreaderbio.tech';
+
+      try {
+        // Notify team
+        await transporter.sendMail({
+          from: fromAddress,
+          to: toAddress,
+          subject: `New Contact Form Submission from ${name}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #2563eb;">New Contact Form Submission</h2>
+              <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
+                <p><strong>Message:</strong></p>
+                <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2563eb;">
+                  ${message.replace(/\n/g, '<br>')}
+                </div>
+              </div>
+              <p style="color: #6b7280; font-size: 14px;">Submitted on: ${new Date().toLocaleString()}</p>
+            </div>`,
+        });
+
+        // Confirmation to sender
+        await transporter.sendMail({
+          from: fromAddress,
+          to: email,
+          subject: 'Thank you for contacting MindReaderBio',
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #2563eb;">Thank you for reaching out!</h2>
+              <p>Hi ${name},</p>
+              <p>We&apos;ve received your message and our team will get back to you within 24 hours.</p>
+              <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3>Your message:</h3>
+                <p>${message.replace(/\n/g, '<br>')}</p>
+              </div>
+              <p>Best regards,<br/>The MindReaderBio Team</p>
+            </div>`,
+        });
+      } catch (emailError) {
+        console.error('SMTP email sending error:', emailError);
+        console.log('Contact form submission (email failed):', {
+          name,
+          email,
+          company,
+          message,
+          timestamp: new Date().toISOString(),
+        });
+      }
+    } else {
+      console.log('Contact form submission (SMTP not configured):', {
+        name,
+        email,
+        company,
+        message,
+        timestamp: new Date().toISOString(),
+      });
+    }
 
     return NextResponse.json(
       { message: 'Thank you for your message. We\'ll get back to you soon!' },

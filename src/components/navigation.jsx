@@ -1,37 +1,85 @@
 "use client";
 
 import React, { useState } from "react";
-import { FloatingNav } from "@/components/ui/floating-navbar";
-import { IconHome, IconUser, IconBrain, IconMail, IconNews } from "@tabler/icons-react";
+import Link from "next/link";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
 export function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+  
   const navItems = [
-    {
-      name: "Home",
-      link: "/",
-      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "About",
-      link: "/about",
-      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "Team",
-      link: "/team",
-      icon: <IconBrain className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "Insights",
-      link: "/insights",
-      icon: <IconNews className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "Contact",
-      link: "/contact",
-      icon: <IconMail className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
+    { name: "Home", link: "/" },
+    { name: "About", link: "/about" },
+    { name: "Team", link: "/team" },
+    { name: "Insights", link: "/insights" },
+    { name: "Contact", link: "/contact" },
   ];
   
-  return <FloatingNav navItems={navItems} />;
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-4 py-4">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="font-bold text-xl text-black">
+            <Link href="/">MindReaderBio</Link>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.link}
+                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Link
+              href="/contact"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            >
+              Get Started
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-gray-700 hover:text-blue-600 transition-colors"
+          >
+            {isOpen ? <IconX className="h-6 w-6" /> : <IconMenu2 className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
+            <div className="space-y-2">
+              {navItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.link}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-gray-700 hover:text-blue-600 transition-colors py-2 font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                className="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center mt-4"
+              >
+                Get Started
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
 }
