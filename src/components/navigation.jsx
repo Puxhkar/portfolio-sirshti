@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 
 export function Navigation() {
@@ -21,7 +22,21 @@ export function Navigation() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="font-bold text-xl text-black">
-            <Link href="/">MindReaderBio</Link>
+            {/* Logo */}
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 font-bold text-xl text-black"
+                >
+                  <Image
+                    src="/logo3.png"   // file inside /public
+                    alt="MindReaderBio Logo"
+                    width={100}
+                    height={100}
+                    priority
+                  />
+                  <span className="tracking-tight">Mindreader Enterprises</span>
+                </Link>
+
           </div>
           
           {/* Desktop Navigation */}

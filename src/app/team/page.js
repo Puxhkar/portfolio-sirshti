@@ -46,8 +46,9 @@ export default function Team() {
             Join Our Team
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            We&apos;re always looking for talented individuals who share our passion for advancing biotech intelligence. 
-            If you&apos;re interested in joining our mission, we&apos;d love to hear from you.
+          Looking Ahead
+Mindreader is in its establishment phase, with a mission to grow into a trusted partner at the intersection of science and finance. As our team expands, we look forward to welcoming new collaborators who share our passion for innovation.
+
           </p>
           <Link
             href="/contact"
@@ -62,40 +63,23 @@ export default function Team() {
 }
 
 const teamMembers = [
+  
   {
-    name: "Dr. Sarah Chen",
-    role: "Chief Scientific Officer",
-    description: "15+ years in biotech research and drug development. Former FDA advisor specializing in oncology therapeutics.",
+    name: "Dr. Srishti Gupta",
+    role: "Chief Science Officer",
+    description: "Dr. Srishti Gupta is the Chief Science Officer (CSO) at Mindreader Enterprises, where she leads the company’s scientific vision and strategy. She holds a Ph.D. in Biological sciences from Colorado State University and a Master’s degree in Biotechnology.Her research background spans molecular biology, protein biochemistry, and cell biology, with extensive experience in recombinant protein expression, RNA sequencing, and functional genomics. Dr. Gupta also brings expertise in translational research, bridging fundamental discoveries with applied outcomes. At Mindreader, she leverages her scientific training to evaluate biotechnology pipelines, analyze emerging therapies, and translate complex research into actionable insights for investors and stakeholders. ",
     icon: "👩‍🔬"
   },
   {
-    name: "Michael Rodriguez", 
-    role: "Head of Market Analysis",
-    description: "Expert in biotech investments and IPO strategies. Previously at Goldman Sachs Healthcare Division.",
+    name: "Dr. Joshua Dloomy, MD", 
+    role: "Chief Technology Officer",
+    description: "Dr. Joshua Dloomy serves as Chief Technology Officer (CTO) at Mindreader Enterprises, bringing a unique blend of medical expertise, technological vision, and market insight. With deep knowledge of human immunology, a passion for biotech innovation, and strong experience in trading and market analysis, he drives the company’s technology strategy and research platforms.At Mindreader, Dr. Dloomy combines his clinical background with biotech market expertise to ensure that our analyses and tools are scientifically robust and strategically aligned with industry needs",
     icon: "📊"
   },
   {
-    name: "Dr. James Thompson",
-    role: "Lead Data Scientist", 
-    description: "Developing AI models for drug discovery prediction. PhD in Computational Biology from Stanford.",
+    name: "[Founder’s Name]",
+    role: "Founder & CEO ", 
+    description: "[Founder’s Name] is the visionary behind Mindreader Enterprises, with a passion for bridging the gap between scientific innovation and market strategy. With experience in [finance/biotech/entrepreneurship – adjust as needed], [he/she/they] founded Mindreader to provide investors and stakeholders with reliable, science-based insights into one of the fastest-growing industries in the world.",
     icon: "🤖"
-  },
-  {
-    name: "Lisa Wang",
-    role: "VP of Business Development",
-    description: "12+ years connecting biotech startups with investors. Former partner at Andreessen Horowitz.",
-    icon: "💼"
-  },
-  {
-    name: "Dr. Robert Kim",
-    role: "Senior Research Analyst",
-    description: "Focusing on rare disease therapeutics and regulatory pathways. Former Genentech researcher.",
-    icon: "🧬"
-  },
-  {
-    name: "Amanda Foster",
-    role: "Head of Communications",
-    description: "Expert in biotech storytelling and stakeholder engagement. Building investor relations.",
-    icon: "📢"
   }
 ];
