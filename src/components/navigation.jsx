@@ -23,19 +23,20 @@ export function Navigation() {
           {/* Logo */}
           <div className="font-bold text-xl text-black">
             {/* Logo */}
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 font-bold text-xl text-black"
-                >
-                  <Image
-                    src="/logo3.png"   // file inside /public
-                    alt="MindReaderBio Logo"
-                    width={100}
-                    height={100}
-                    priority
-                  />
-                  <span className="tracking-tight">Mindreader Enterprises</span>
-                </Link>
+            <Link
+            href="/"
+            className="flex items-center gap-2 font-bold text-xl"
+          >
+            <Image
+              src="/logo3.png"
+              alt="MindReaderBio Logo"
+              width={100}
+              height={100}
+              priority
+            />
+            <span className="tracking-tight text-[#07beb8]">MindReaderBio</span>
+          </Link>
+
 
           </div>
           

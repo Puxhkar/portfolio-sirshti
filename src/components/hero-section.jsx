@@ -14,13 +14,27 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center mb-8"
+          >
+            <img
+              src="logo3.png"   // put your logo inside /public folder
+              alt="Smarter Biotech Logo"
+              className="w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
+            />
+          </motion.div>
+
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#07beb8] leading-tight">
             Smarter Biotech,
             <br />
             <span className="text-blue-600">Better Markets</span>
           </h1>
-          
+
           {/* Subheading */}
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Welcome to MindReaderBio – your trusted co-pilot for smarter biotech investment decisions and market intelligence.
