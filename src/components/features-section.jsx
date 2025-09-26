@@ -5,33 +5,8 @@ import { motion } from "framer-motion";
 
 export function FeaturesSection() {
   const features = [
-    {
-      title: "Our Mission",
-      subtitle: "Driving innovation in biotech intelligence",
-      description:
-        "At MindReaderBio, our mission is to simplify complex biotech data into meaningful insights. We believe that science-driven markets deserve equally advanced tools, helping investors, researchers, and companies make smarter decisions.",
-      details:
-        "By combining artificial intelligence with real-world biotech data, we aim to close the gap between breakthrough science and market opportunities — empowering a future where innovation leads directly to impact.",
-      icon: "🌍",
-    },
-    {
-      title: "What We Do",
-      subtitle: "Turning biotech data into opportunities",
-      description:
-        "We build tools that transform biotech research, regulatory updates, and clinical data into actionable market intelligence.",
-      details:
-        "From tracking FDA approvals to analyzing biotech pipelines, our platform delivers insights that highlight potential growth, risks, and opportunities — all in real time.",
-      icon: "🧬",
-    },
-    {
-      title: "Why It Matters",
-      subtitle: "Making complex markets accessible",
-      description:
-        "Biotech is one of the fastest-growing, but also most unpredictable, industries in the world. Access to clear insights can define the difference between missed chances and breakthrough investments.",
-      details:
-        "MindReaderBio makes these insights accessible — whether you’re an investor, researcher, or innovator, we give you the clarity to move forward with confidence.",
-      icon: "💡",
-    },
+   
+
   ];
 
   return (

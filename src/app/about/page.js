@@ -20,11 +20,9 @@ export default function About() {
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div className="bg-gray-50 rounded-2xl p-8">
-            <h2 className="text-2xl font-bold text-black mb-4">Our Mission</h2>
+            <h2 className="text-2xl font-bold text-black mb-4">Why It Matters</h2>
             <p className="text-gray-700 leading-relaxed">
-              MindReader Enterprises is dedicated to strategic biotech market analysis and innovation. 
-              We provide insights into emerging therapies, breakthrough research, and FDA clinical 
-              developments to guide investors and industry stakeholders in making informed decisions.
+            Biotechnology is transforming healthcare, agriculture, and global markets. By combining deep scientific expertise with market intelligence, Mindreader ensures that investment strategies and business decisions are built on a foundation of rigorous, validated science.
             </p>
           </div>
 
@@ -46,7 +44,7 @@ export default function About() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🧬</span>
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">Scientific Rigor</h3>
+              <h3 className="text-xl font-bold text-black mb-3">Scientific Research</h3>
               <p className="text-gray-600">
                 Evidence-based analysis grounded in peer-reviewed research and clinical data
               </p>
@@ -66,7 +64,7 @@ export default function About() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🚀</span>
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">Innovation Focus</h3>
+              <h3 className="text-xl font-bold text-black mb-3">Investment Excellence</h3>
               <p className="text-gray-600">
                 Identifying breakthrough technologies that will shape the future of healthcare
               </p>

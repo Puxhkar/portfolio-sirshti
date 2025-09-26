@@ -21,38 +21,35 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="flex justify-center mb-8"
           >
-            <img
-              src="logo3.png"   // put your logo inside /public folder
-              alt="Smarter Biotech Logo"
-              className="w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
-            />
+           <img
+  src="/logo3.png" // make sure it's in the public folder
+  alt="Smarter Biotech Logo"
+  className="
+    w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96  /* Responsive sizing */
+    rounded-xl                          /* Rounded edges */
+    shadow-lg                             /* Subtle shadow for depth */
+    transition-transform transition-shadow duration-300 ease-in-out /* Smooth hover effect */
+    hover:scale-105                       /* Slightly grow on hover */
+    hover:shadow-2xl                      /* Shadow becomes bigger on hover */
+    object-contain
+  "
+/>
+
           </motion.div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#07beb8] leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#003049] leading-tight">
             Smarter Biotech,
             <br />
-            <span className="text-blue-600">Better Markets</span>
+            <span className="text-[#2ec4b6]">Better Markets</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Welcome to MindReaderBio – your trusted co-pilot for smarter biotech investment decisions and market intelligence.
+          Mindreader Enterprises is a biotech startup dedicated to strategic biotech market analysis and innovation. We deliver insights into emerging therapies, breakthrough scientific research, and FDA clinical developments, empowering investors and industry stakeholders to make informed, science-driven decisions.
           </p>
 
-          {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">
-              📊 Market Analysis
-            </div>
-            <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">
-              🧬 FDA Insights
-            </div>
-            <div className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">
-              💡 Investment Intelligence
-            </div>
-          </div>
-
+          
           {/* CTA Button */}
           <div className="mt-12">
             <Link
@@ -65,12 +62,6 @@ export function HeroSection() {
 
           {/* Secondary CTA */}
           <div className="mt-6">
-            <Link
-              href="/contact"
-              className="text-blue-600 hover:text-blue-700 font-medium underline"
-            >
-              Join Our Waitlist
-            </Link>
           </div>
         </motion.div>
       </div>
