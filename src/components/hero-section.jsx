@@ -46,7 +46,7 @@ export function HeroSection() {
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Mindreader Enterprises is a biotech startup dedicated to strategic biotech market analysis and innovation. We deliver insights into emerging therapies, breakthrough scientific research, and FDA clinical developments, empowering investors and industry stakeholders to make informed, science-driven decisions.
+          Bridging Science and Markets in Biotechnology
           </p>
 
           

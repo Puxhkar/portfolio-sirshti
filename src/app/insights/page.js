@@ -4,14 +4,66 @@ export const metadata = {
 };
 
 import Link from "next/link";
+import { AlertTriangle } from "lucide-react";
 
 export default function Insights() {
   return (
     <div className="min-h-screen pt-20">
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
+        
+        {/* Disclaimer Banner */}
+        <div className="mb-12">
+          <div className="flex items-start gap-3 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-xl p-4 shadow-sm">
+            <AlertTriangle className="w-5 h-5 mt-0.5 flex-shrink-0 text-yellow-600" />
+            <p className="text-sm md:text-base leading-relaxed">
+              <strong>Disclaimer:</strong> These portfolio names are subject to change. All summaries are for informational purposes only and do not constitute investment advice. We will publish updates on any changes in opinion or portfolio adjustments as they occur.
+            </p>
+          </div>
+        </div>
+
+        {/* General Portfolio */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
+            General Portfolio
+          </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            We offer a diversified portfolio of companies that we believe have strong potential and are already well-researched.
+            To keep things straightforward, we will list the portfolio names without providing detailed fundamental or technical commentary. 
+            Subscribers will be notified promptly whenever we make additions, sales, or other changes to the General Portfolio.
+            All stocks featured here are part of Dr. Forsyth’s active personal portfolio, reflecting his own market positions.
+            <br /><br />
+            <strong>Stock prices will be published on the day we go live.</strong>
+          </p>
+        </div>
+
+        {/* General Portfolio Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-24">
+          {generalPortfolio.map((stock, index) => (
+            <article 
+              key={index} 
+              className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full font-medium">
+                  {stock.symbol}
+                </span>
+                <span className="text-gray-500 text-xs">{stock.category}</span>
+              </div>
+              
+              <h3 className="text-xl font-bold text-black mb-3">
+                {stock.name}
+              </h3>
+              
+              <p className="text-gray-700 leading-relaxed">
+                {stock.description}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        {/* Biotech Insights Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
             Biotech Insights
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -19,10 +71,13 @@ export default function Insights() {
           </p>
         </div>
 
-        {/* Insights Grid */}
+        {/* Biotech Insights Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {insightPosts.map((post, index) => (
-            <article key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+            <article 
+              key={index} 
+              className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+            >
               <div className="flex items-center gap-2 mb-4">
                 <span className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full font-medium">
                   {post.category}
@@ -50,14 +105,34 @@ export default function Insights() {
             </article>
           ))}
         </div>
-
-        {/* Newsletter Signup */}
       </div>
     </div>
   );
 }
 
-// Biotech Portfolio Data
+// General Portfolio Data
+const generalPortfolio = [
+  {
+    symbol: "BA",
+    name: "Boeing Co.",
+    description: "Global aerospace & defense company. Designs, manufactures, and services commercial airplanes, defense systems, satellites, and global services.",
+    category: "Aerospace & Defense"
+  },
+  {
+    symbol: "CRWV",
+    name: "CoreWeave, Inc.",
+    description: "AI infrastructure / computing services provider. Builds GPU / compute infrastructure for AI workloads, cloud services, etc.",
+    category: "AI Infrastructure"
+  },
+  {
+    symbol: "NBIS",
+    name: "Nebius Group, N.V.",
+    description: "AI / data / cloud computing / infrastructure services.",
+    category: "Cloud & Data"
+  }
+];
+
+// Biotech Insights Data
 const insightPosts = [
   {
     title: "BDTX (Black Diamond Therapeutics)",
