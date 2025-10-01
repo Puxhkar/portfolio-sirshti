@@ -93,15 +93,7 @@ export default function Insights() {
                 {post.excerpt}
               </p>
               
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">By {post.author}</span>
-                <Link 
-                  href={`/insights/${post.slug}`}
-                  className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
-                >
-                  Read More →
-                </Link>
-              </div>
+              
             </article>
           ))}
         </div>
@@ -129,6 +121,72 @@ const generalPortfolio = [
     name: "Nebius Group, N.V.",
     description: "AI / data / cloud computing / infrastructure services.",
     category: "Cloud & Data"
+  },
+  {
+    symbol: "CDE",
+    name: "Coeur Mining, Inc.",
+    description: "Precious metals producer focused on gold and silver mining across North America.",
+    category: "Mining / Metals"
+  },
+  {
+    symbol: "HBM",
+    name: "Hudbay Minerals Inc.",
+    description: "Diversified mining company producing copper, gold, and zinc across operations in the Americas.",
+    category: "Mining / Materials"
+  },
+  {
+    symbol: "HOOD",
+    name: "Robinhood Markets, Inc.",
+    description: "Commission-free stock and crypto trading platform disrupting traditional brokerages.",
+    category: "Fintech / Brokerage"
+  },
+  {
+    symbol: "SNOW",
+    name: "Snowflake Inc.",
+    description: "Cloud-based data warehousing and analytics platform enabling scalable data solutions.",
+    category: "Data / Cloud"
+  },
+  {
+    symbol: "BMNR",
+    name: "Brigham Minerals, Inc.",
+    description: "Company acquiring and managing mineral and royalty interests in oil and gas assets.",
+    category: "Energy / Royalties"
+  },
+  {
+    symbol: "META",
+    name: "Meta Platforms, Inc.",
+    description: "Parent of Facebook, Instagram, and WhatsApp, investing in AR/VR and the metaverse.",
+    category: "Technology / Social Media"
+  },
+  {
+    symbol: "PEGA",
+    name: "Pegasystems Inc.",
+    description: "Software company providing customer engagement, workflow automation, and AI-driven solutions.",
+    category: "Enterprise Software"
+  },
+  {
+    symbol: "UUUU",
+    name: "Energy Fuels Inc.",
+    description: "Leading U.S. uranium producer with additional vanadium and rare earth recovery projects.",
+    category: "Clean Energy / Uranium"
+  },
+  {
+    symbol: "LOW",
+    name: "Lowe’s Companies, Inc.",
+    description: "Home improvement retailer offering building products, tools, and appliances.",
+    category: "Retail / Consumer"
+  },
+  {
+    symbol: "GSAT",
+    name: "Globalstar, Inc.",
+    description: "Provider of mobile satellite voice and data services worldwide.",
+    category: "Communications / Satellite"
+  },
+  {
+    symbol: "OXY",
+    name: "Occidental Petroleum Corporation",
+    description: "International oil and gas exploration and production company with low-carbon initiatives.",
+    category: "Energy / Oil & Gas"
   }
 ];
 
@@ -140,7 +198,7 @@ const insightPosts = [
     author: "Portfolio Analyst",
     date: "2025-09-26",
     category: "Oncology",
-    slug: "bdtx-black-diamond-therapeutics"
+    slug: "https://finance.yahoo.com/quote/BDTX"
   },
   {
     title: "IBRX (ImmunityBio)",
