@@ -1,6 +1,7 @@
 export const metadata = {
   title: "Insights - MindReaderBio",
-  description: "Latest biotech insights, market analysis, and research developments from MindReaderBio experts.",
+  description:
+    "Latest biotech insights, market analysis, and research developments from MindReaderBio experts.",
 };
 
 import Link from "next/link";
@@ -11,6 +12,14 @@ export default function Insights() {
     <div className="min-h-screen pt-20">
       <div className="max-w-6xl mx-auto px-4 py-16">
         
+        {/* Intro Section */}
+        <div className="mb-12 text-center">
+          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            We feel that there has to be balance in any investment portfolio. We will be providing a general as well as biotech investment portfolio. 
+            In order to participate with MindReader stock pick you can connect and subscribe to MindReader.
+          </p>
+        </div>
+
         {/* Disclaimer Banner */}
         <div className="mb-12">
           <div className="flex items-start gap-3 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-xl p-4 shadow-sm">
@@ -92,10 +101,28 @@ export default function Insights() {
               <p className="text-gray-700 mb-4 leading-relaxed">
                 {post.excerpt}
               </p>
-              
-              
             </article>
           ))}
+        </div>
+
+        {/* Informational Line */}
+        <div className="bg-gray-50 rounded-2xl p-8 mt-16 mb-8">
+          <p className="text-gray-700 text-center text-lg leading-relaxed max-w-4xl mx-auto">
+            All these stocks appear in our portfolio but these are not meant to
+            be any individual’s portfolio. These are provided for informational
+            purposes. The suitability of any of these investments will be
+            dependent on individual financial situation and risk tolerance.
+          </p>
+        </div>
+
+        {/* Disclaimer at Bottom */}
+        <div className="border-t border-gray-200 pt-6 text-center text-sm text-gray-500 max-w-3xl mx-auto">
+          <p>
+            Disclaimer: The information provided by MindReader Enterprises is
+            for educational and informational purposes only and should not be
+            considered financial advice. Always do your own due diligence before
+            making any investment decisions.
+          </p>
         </div>
       </div>
     </div>

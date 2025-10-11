@@ -41,13 +41,8 @@ export function HeroSection() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#003049] leading-tight">
             Smarter Biotech,
             <br />
-            <span className="text-[#2ec4b6]">Better Markets</span>
+            <span className="text-[#2ec4b6]">Better Markets Decision</span>
           </h1>
-
-          {/* Subheading */}
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Bridging Science and Markets in Biotechnology
-          </p>
 
           
           {/* CTA Button */}
