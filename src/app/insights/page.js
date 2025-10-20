@@ -20,16 +20,6 @@ export default function Insights() {
           </p>
         </div>
 
-        {/* Disclaimer Banner */}
-        <div className="mb-12">
-          <div className="flex items-start gap-3 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-xl p-4 shadow-sm">
-            <AlertTriangle className="w-5 h-5 mt-0.5 flex-shrink-0 text-yellow-600" />
-            <p className="text-sm md:text-base leading-relaxed">
-              <strong>Disclaimer:</strong> These portfolio names are subject to change. All summaries are for informational purposes only and do not constitute investment advice. We will publish updates on any changes in opinion or portfolio adjustments as they occur.
-            </p>
-          </div>
-        </div>
-
         {/* General Portfolio */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
@@ -106,7 +96,7 @@ export default function Insights() {
         </div>
 
         {/* Informational Line */}
-        <div className="bg-gray-50 rounded-2xl p-8 mt-16 mb-8">
+        <div className="bg-gray-50 rounded-2xl p-8 mt-16 mb-12">
           <p className="text-gray-700 text-center text-lg leading-relaxed max-w-4xl mx-auto">
             All these stocks appear in our portfolio but these are not meant to
             be any individual’s portfolio. These are provided for informational
@@ -115,7 +105,17 @@ export default function Insights() {
           </p>
         </div>
 
-        {/* Disclaimer at Bottom */}
+        {/* Disclaimer Banner (Moved Here) */}
+        <div className="mb-12">
+          <div className="flex items-start gap-3 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-xl p-4 shadow-sm">
+            <AlertTriangle className="w-5 h-5 mt-0.5 flex-shrink-0 text-yellow-600" />
+            <p className="text-sm md:text-base leading-relaxed">
+              <strong>Disclaimer:</strong> These portfolio names are subject to change. All summaries are for informational purposes only and do not constitute investment advice. We will publish updates on any changes in opinion or portfolio adjustments as they occur.
+            </p>
+          </div>
+        </div>
+
+        {/* Final Gray Disclaimer */}
         <div className="border-t border-gray-200 pt-6 text-center text-sm text-gray-500 max-w-3xl mx-auto">
           <p>
             Disclaimer: The information provided by MindReader Enterprises is
