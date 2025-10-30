@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
           <AppBackground />
           <Navigation />
           <PageTransition>
-            <main role="main" className="relative">
+            <main role="main" className="relative pt-24">
               {children}
             </main>
           </PageTransition>

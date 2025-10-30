@@ -69,10 +69,10 @@ export default function PricingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-28 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Simple, Transparent Pricing
           </h1>
@@ -82,11 +82,11 @@ export default function PricingPage() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl p-8 ${
+              className={`relative rounded-2xl p-8 md:p-10 ${
                 plan.popular
                   ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl scale-105'
                   : 'bg-white shadow-lg'
@@ -121,7 +121,7 @@ export default function PricingPage() {
                 </div>
               </div>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-3 md:space-y-4 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.popular ? 'text-green-300' : 'text-green-600'}`} />
@@ -135,10 +135,10 @@ export default function PricingPage() {
               <button
                 onClick={plan.name === 'Pro' ? handleSubscribe : undefined}
                 disabled={loading || plan.name === 'Free'}
-                className={`w-full py-3 px-6 rounded-lg font-semibold transition-all ${
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                   plan.popular
-                    ? 'bg-white text-blue-600 hover:bg-gray-100'
-                    : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    ? 'bg-white text-blue-600 hover:bg-gray-100 focus:ring-blue-500'
+                    : 'bg-gray-100 text-gray-400 cursor-not-allowed focus:ring-gray-300'
                 } ${loading ? 'opacity-50 cursor-wait' : ''}`}
               >
                 {loading ? 'Processing...' : plan.cta}

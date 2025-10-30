@@ -33,31 +33,26 @@ export function Navigation() {
   ];
   
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-gray-200 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="font-bold text-xl text-black">
-            {/* Logo */}
-            <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl"
-          >
-            <Image
-              src="/logo3.png"
-              alt="MindReaderBio Logo"
-              width={100}
-              height={100}
-              priority
-            />
-            <span className="tracking-tight text-[#07beb8]">MindReaderBio</span>
-          </Link>
-
-
+            <Link href="/" className="flex items-center gap-2 font-bold text-xl">
+              <Image
+                src="/logo3.png"
+                alt="MindReaderBio Logo"
+                width={40}
+                height={40}
+                priority
+                className="rounded"
+              />
+              <span className="tracking-tight text-[#07beb8]">MindReaderBio</span>
+            </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <Link
                 key={index}
@@ -83,16 +78,16 @@ export function Navigation() {
                     <Image
                       src={session.user.image}
                       alt={session.user.name || "User"}
-                      width={40}
-                      height={40}
+                      width={36}
+                      height={36}
                       className="rounded-full border-2 border-blue-500"
                     />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold border-2 border-blue-500">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold border-2 border-blue-500">
                       {(session.user.name || session.user.email || "U").charAt(0).toUpperCase()}
                     </div>
                   )}
-                  <span className="text-gray-700 font-medium">{session.user.name || "User"}</span>
+                  <span className="hidden sm:block max-w-[140px] truncate text-gray-700 font-medium">{session.user.name || "User"}</span>
                 </button>
 
                 {/* User Dropdown Menu */}
