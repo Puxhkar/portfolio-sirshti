@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { Menu, X } from "lucide-react";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +13,7 @@ export function Navigation() {
     { name: "About", link: "/about" },
     { name: "Team", link: "/team" },
     { name: "Insights", link: "/insights" },
+    { name: "Pricing", link: "/pricing" },
     { name: "Contact", link: "/contact" },
   ];
   
@@ -53,10 +54,16 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
             <Link
-              href="/contact"
+              href="/auth/signin"
+              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+            >
+              Sign In
+            </Link>
+            <Link
+              href="/auth/signin"
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               Get Started
@@ -68,7 +75,7 @@ export function Navigation() {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-gray-700 hover:text-blue-600 transition-colors"
           >
-            {isOpen ? <IconX className="h-6 w-6" /> : <IconMenu2 className="h-6 w-6" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
@@ -87,7 +94,15 @@ export function Navigation() {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href="/auth/signin"
+                onClick={() => setIsOpen(false)}
+                className="block text-gray-700 hover:text-blue-600 transition-colors py-2 font-medium"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/auth/signin"
+                onClick={() => setIsOpen(false)}
                 className="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center mt-4"
               >
                 Get Started

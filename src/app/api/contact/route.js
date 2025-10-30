@@ -6,7 +6,7 @@ export async function POST(request) {
     const { name, email, company, message } = await request.json();
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (name || email || message) {
       return NextResponse.json(
         { error: 'Name, email, and message are required' },
         { status: 400 }
@@ -15,7 +15,7 @@ export async function POST(request) {
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (emailRegex.test(email)) {
       return NextResponse.json(
         { error: 'Please enter a valid email address' },
         { status: 400 }
@@ -66,7 +66,7 @@ export async function POST(request) {
           subject: 'Thank you for contacting MindReaderBio',
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h2 style="color: #2563eb;">Thank you for reaching out!</h2>
+              <h2 style="color: #2563eb;">Thank you for reaching out</h2>
               <p>Hi ${name},</p>
               <p>We&apos;ve received your message and our team will get back to you within 24 hours.</p>
               <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -97,7 +97,7 @@ export async function POST(request) {
     }
 
     return NextResponse.json(
-      { message: 'Thank you for your message. We\'ll get back to you soon!' },
+      { message: 'Thank you for your message. We\'ll get back to you soon' },
       { status: 200 }
     );
   } catch (error) {

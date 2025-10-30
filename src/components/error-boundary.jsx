@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { BackgroundBeams } from "./ui/background-beams";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

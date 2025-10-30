@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/navigation";
-import { PageTransition } from "@/components/page-transition";
-import { OrganizationSchema, WebsiteSchema } from "@/components/structured-data";
-import { AppBackground } from "@/components/app-background";
+import { Navigation } from "../components/navigation";
+import { PageTransition } from "../components/page-transition";
+import { OrganizationSchema, WebsiteSchema } from "../components/structured-data";
+import { AppBackground } from "../components/app-background";
+import { Providers } from "../components/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -85,13 +86,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden relative`}
       >
-        <AppBackground />
-        <Navigation />
-        <PageTransition>
-          <main role="main" className="relative">
-            {children}
-          </main>
-        </PageTransition>
+        <Providers>
+          <AppBackground />
+          <Navigation />
+          <PageTransition>
+            <main role="main" className="relative">
+              {children}
+            </main>
+          </PageTransition>
+        </Providers>
         
         {/* Skip to main content for accessibility */}
         <a
