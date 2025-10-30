@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import { auth } from '../../../lib/auth';
-import prisma from '../../../lib/prisma';
+import { auth } from '../../../../lib/auth';
+import prisma from '../../../../lib/prisma';
 
 export async function GET() {
   try {
     const session = await auth();
 
-    if (!session || (session.user.role !== 'ADMIN' && session.user.role !== 'SUPER_ADMIN')) {
+    if (!session || session.user.role !== 'ADMIN') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

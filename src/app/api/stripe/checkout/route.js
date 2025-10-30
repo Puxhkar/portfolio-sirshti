@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '../../../lib/auth';
-import { stripe, createCheckoutSession, createStripeCustomer, PLANS } from '../../../lib/stripe';
-import prisma from '../../../lib/prisma';
+import { auth } from '../../../../lib/auth';
+import { stripe, createCheckoutSession, createStripeCustomer, PLANS } from '../../../../lib/stripe';
+import prisma from '../../../../lib/prisma';
 
 export async function POST(req) {
   try {

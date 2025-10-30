@@ -40,25 +40,28 @@ model User {
 
 model EmailLog {
   id            String         @id @default(cuid())
-  userId        String
+  userId        String?
+  email         String
   campaignId    String?
-  emailType     EmailType
+  type          EmailType
   subject       String
   status        EmailStatus    @default(PENDING)
   sentAt        DateTime?
   openedAt      DateTime?
   clickedAt     DateTime?
   error         String?
+  metadata      Json?
   createdAt     DateTime       @default(now())
   EmailCampaign EmailCampaign? @relation(fields: [campaignId], references: [id])
-  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user          User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@index([userId])
+  @@index([email])
   @@index([status])
   @@index([createdAt])
   @@index([campaignId])
-  @@index([emailType, createdAt])
-  @@index([emailType])
+  @@index([type, createdAt])
+  @@index([type])
   @@index([status, createdAt])
 }
 
@@ -126,8 +129,13 @@ enum SubscriptionPlan {
 
 enum EmailType {
   WELCOME
-  ONBOARDING
+  VERIFICATION
+  PASSWORD_RESET
+  LOGIN_NOTIFICATION
+  NEWSLETTER
   MARKETING
+  TRANSACTIONAL
+  ONBOARDING
   UPGRADE_PROMPT
   TRIAL_ENDING
   SUBSCRIPTION_CONFIRMED
@@ -143,8 +151,8 @@ enum EmailStatus {
   DELIVERED
   OPENED
   CLICKED
-  BOUNCED
   FAILED
+  BOUNCED
 }
 
 enum CampaignStatus {

@@ -110,6 +110,9 @@ export const authOptions = {
       if (user) {
         token.id = user.id;
         token.role = user.role;
+        token.plan = user.plan;
+        token.emailVerified = user.emailVerified;
+        token.createdAt = user.createdAt;
       }
 
       // Update session
@@ -124,6 +127,9 @@ export const authOptions = {
       if (session.user) {
         session.user.id = token.id;
         session.user.role = token.role;
+        session.user.plan = token.plan;
+        session.user.emailVerified = token.emailVerified;
+        session.user.createdAt = token.createdAt;
       }
 
       return session;

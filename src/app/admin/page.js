@@ -20,7 +20,7 @@ export default function AdminDashboard() {
       return;
     }
 
-    if (session?.user?.role !== 'ADMIN' && session?.user?.role !== 'SUPER_ADMIN') {
+    if (session?.user?.role !== 'ADMIN') {
       router.push('/dashboard');
       return;
     }
@@ -184,7 +184,6 @@ export default function AdminDashboard() {
                       >
                         <option value="USER">User</option>
                         <option value="ADMIN">Admin</option>
-                        <option value="SUPER_ADMIN">Super Admin</option>
                       </select>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
