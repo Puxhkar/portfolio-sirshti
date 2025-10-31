@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String        @id @default(cuid())
+  name                   String?
+  email                  String        @unique
+  emailVerified          DateTime?
+  image                  String?
+  password               String?
+  role                   UserRole      @default(USER)
+  emailOptIn             Boolean       @default(true)
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+  provider               String?
+  providerId             String?
+  stackAuthId            String?       @unique
+  plan                   String        @default("FREE")
+  stripeCustomerId       String?       @unique
+  stripeSubscriptionId   String?       @unique
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
+  emailLogs              EmailLog[]
+  Subscription           Subscription?
+
+  @@index([email])
+  @@index([role])
+  @@index([plan])
+  @@index([stripeCustomerId])
+  @@index([emailOptIn])
+  @@index([provider, providerId])
+  @@index([stackAuthId])
+}
+
+model EmailLog {
+  id            String         @id @default(cuid())
+  userId        String?
+  email         String
+  campaignId    String?
+  type          EmailType
+  subject       String
+  status        EmailStatus    @default(PENDING)
+  sentAt        DateTime?
+  openedAt      DateTime?
+  clickedAt     DateTime?
+  error         String?
+  metadata      Json?
+  createdAt     DateTime       @default(now())
+  EmailCampaign EmailCampaign? @relation(fields: [campaignId], references: [id])
+  user          User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@index([campaignId])
+  @@index([type, createdAt])
+  @@index([type])
+  @@index([status, createdAt])
+}
+
+model EmailCampaign {
+  id             String         @id
+  name           String
+  subject        String
+  content        String
+  targetAudience String
+  status         CampaignStatus @default(DRAFT)
+  scheduledAt    DateTime?
+  sentAt         DateTime?
+  createdBy      String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime
+  EmailLog       EmailLog[]
+
+  @@index([scheduledAt])
+  @@index([status])
+}
+
+model Invoice {
+  id                 String    @id
+  userId             String
+  stripeInvoiceId    String?   @unique
+  amount             Float
+  currency           String    @default("usd")
+  status             String
+  pdfUrl             String?
+  invoiceNumber      String    @unique
+  billingPeriodStart DateTime
+  billingPeriodEnd   DateTime
+  paidAt             DateTime?
+  createdAt          DateTime  @default(now())
+
+  @@index([status])
+  @@index([userId])
+}
+
+model Subscription {
+  id                     String             @id
+  userId                 String             @unique
+  stripeCustomerId       String?            @unique
+  stripeSubscriptionId   String?            @unique
+  stripeCurrentPeriodEnd DateTime?
+  status                 SubscriptionStatus @default(FREE)
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime
+  User                   User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@index([stripeCustomerId])
+  @@index([userId])
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+}
+
+enum EmailType {
+  WELCOME
+  VERIFICATION
+  PASSWORD_RESET
+  LOGIN_NOTIFICATION
+  NEWSLETTER
+  MARKETING
+  TRANSACTIONAL
+  ONBOARDING
+  UPGRADE_PROMPT
+  TRIAL_ENDING
+  SUBSCRIPTION_CONFIRMED
+  PAYMENT_FAILED
+  INVOICE
+  RE_ENGAGEMENT
+  FEATURE_ANNOUNCEMENT
+}
+
+enum EmailStatus {
+  PENDING
+  SENT
+  DELIVERED
+  OPENED
+  CLICKED
+  FAILED
+  BOUNCED
+}
+
+enum CampaignStatus {
+  DRAFT
+  SCHEDULED
+  SENDING
+  SENT
+  PAUSED
+}
+
+enum SubscriptionStatus {
+  FREE
+  ACTIVE
+  CANCELED
+  PAST_DUE
+}
